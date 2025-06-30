@@ -439,9 +439,15 @@ func main() {
 	rand.Seed(time.Now().UnixNano())
 	
 	for i := range large1 {
+	if (k == 64) {
+	large1[i] = rand.Uint64()
+	large2[i] = rand.Uint64()
+	largeWant[i] = large1[i] * large2[i]
+	} else {
 	large1[i] = rand.Uint64() % (uint64(1) << k)
 	large2[i] = rand.Uint64() % (uint64(1) << k)
 	largeWant[i] = (large1[i] * large2[i]) % (uint64(1) << k)
+	}
 	}
 	
 	vec1 := make([][]complex128, k/l)
